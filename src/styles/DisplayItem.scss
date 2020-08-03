@@ -1,0 +1,15 @@
+.display {
+  text-align: center;
+  align-items: center;
+  margin-top: 100px;
+  .display__itemImage img {
+    width: 40%;
+    padding-top: 20px;
+  }
+  &__mainHeading h1 {
+    font-size: 60px;
+  }
+  &__discription p {
+    color: #777;
+  }
+}

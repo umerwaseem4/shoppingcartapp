@@ -8,6 +8,7 @@ import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Badge from "@material-ui/core/Badge";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
+  const num = useSelector((state) => state.cartReducer.number);
+  console.log(num);
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" style={{ backgroundColor: "#0F1111" }}>
+      <AppBar style={{ backgroundColor: "#0F1111", position: "fixed" }}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <img src={logo} alt="logo" className="header__logo" />
@@ -35,7 +37,7 @@ export default function ButtonAppBar() {
             Home
           </Link>
           <Link to="/cart" className="shoppingcartico">
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={num} color="primary">
               <AddShoppingCartIcon />
             </Badge>
           </Link>
