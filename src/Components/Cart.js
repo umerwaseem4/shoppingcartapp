@@ -52,6 +52,9 @@ const Cart = () => {
               <Typography variant="body2" color="textSecondary" component="p">
                 {items.desc}
               </Typography>
+              <Typography color="textPrimary" component="h1">
+                {items.price}
+              </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
@@ -69,7 +72,7 @@ const Cart = () => {
   ) : (
     <CartEmpty />
   );
-  return <div>{cartItems}</div>;
+  return <div className="container">{cartItems}</div>;
 };
 
 export default Cart;
