@@ -4,8 +4,8 @@ import product3 from "../Images/card3.jpg";
 import product4 from "../Images/card4.jpg";
 import product5 from "../Images/card5.jpg";
 import product6 from "../Images/card6.jpg";
-import { ADD_TO_CART } from "../actions/action-types";
-import { REMOVE_ITEM } from "../actions/action-types";
+import { ADD_TO_CART, REMOVE_ITEM } from "../actions/action-types";
+import { addToTotal } from "../actions";
 
 const INITIAL_STATE = {
   items: [
@@ -55,13 +55,14 @@ const INITIAL_STATE = {
   addedItems: [],
   total: 0,
   number: 0,
+  quantity: 1,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   console.log(state);
   if (action.type === ADD_TO_CART) {
-    let addedItem = state.items.find((item) => item.id === action.payload);
-    let existed_item = state.addedItems.find(
+    const addedItem = state.items.find((item) => item.id === action.payload);
+    const existed_item = state.addedItems.find(
       (item) => action.payload === item.id
     );
     if (existed_item) {
@@ -73,6 +74,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         addedItems: [...state.addedItems, addedItem],
         number: state.number + 1,
+        total: state.total + addedItem.price,
       };
     }
   }
@@ -81,13 +83,35 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     const removedItem = state.addedItems.filter(
       (item) => item.id !== action.payload
     );
+    const totalPrice = state.items.find((item) => item.id === action.payload);
+    console.log(totalPrice.price);
     return {
       ...state,
       addedItems: removedItem,
       number: state.number - 1,
+      total: state.total - totalPrice.price,
     };
   }
-
+  if (action.type === "ADD_TO_TOTAL") {
+    const addItemToTotal = state.items.find(
+      (item) => item.id === action.payload
+    );
+    return {
+      ...state,
+      total: state.total + addItemToTotal.price,
+      quantity: state.quantity + 1,
+    };
+  }
+  if (action.type === "SUB_TO_TOTAL") {
+    const subItemToTotal = state.items.find(
+      (item) => item.id === action.payload
+    );
+    return {
+      ...state,
+      total: state.total - subItemToTotal.price,
+      quantity: state.quantity - 1,
+    };
+  }
   return state;
 };
 

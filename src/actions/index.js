@@ -14,3 +14,17 @@ export const removeFromCart = (id) => {
     payload: id,
   };
 };
+
+export const addToTotal = (id) => {
+  return {
+    type: "ADD_TO_TOTAL",
+    payload: id,
+  };
+};
+
+export const subToTotal = (id) => {
+  return {
+    type: "SUB_TO_TOTAL",
+    payload: id,
+  };
+};

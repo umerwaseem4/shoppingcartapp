@@ -13,21 +13,21 @@ const Home = () => {
           <div className="carousel-item active">
             <img
               className="d-block w-100"
-              src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Sports_en_US_1x._CB431860448_.jpg"
+              src="//laz-img-cdn.alicdn.com/images/ims-web/TB1I.6oP8r0gK0jSZFnXXbRRXXa.jpg_1200x1200Q100.jpg_.webp"
               alt="First slide"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Beauty_v2_en_US_1x._CB429089975_.jpg"
+              src="//laz-img-cdn.alicdn.com/images/ims-web/TB1qgg_dwgP7K4jSZFqXXamhVXa.jpg_1200x1200.jpg"
               alt="Second slide"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Currency_v2_en_US_2x._CB428993290_.jpg"
+              src="//laz-img-cdn.alicdn.com/images/ims-web/TB1SXDpP8r0gK0jSZFnXXbRRXXa.jpg_1200x1200Q100.jpg_.webp"
               alt="Third slide"
             />
           </div>
@@ -38,7 +38,10 @@ const Home = () => {
           role="button"
           data-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="sr-only">Previous</span>
         </a>
         <a
@@ -47,7 +50,10 @@ const Home = () => {
           role="button"
           data-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="sr-only">Next</span>
         </a>
       </div>

@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "absolute",
   },
   menuButton: {
     marginRight: theme.spacing(2),
