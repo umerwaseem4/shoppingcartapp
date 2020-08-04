@@ -52,7 +52,7 @@ const INITIAL_STATE = {
       img: product6,
     },
   ],
-  addedItems: [],
+  itemAdded: [],
   total: 0,
   number: 0,
   quantity: 1,
@@ -62,7 +62,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
   console.log(state);
   if (action.type === ADD_TO_CART) {
     const addedItem = state.items.find((item) => item.id === action.payload);
-    const existed_item = state.addedItems.find(
+    const existed_item = state.itemAdded.find(
       (item) => action.payload === item.id
     );
     if (existed_item) {
@@ -72,7 +72,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     } else {
       return {
         ...state,
-        addedItems: [...state.addedItems, addedItem],
+        itemAdded: [...state.itemAdded, addedItem],
         number: state.number + 1,
         total: state.total + addedItem.price,
       };
@@ -80,14 +80,14 @@ const cartReducer = (state = INITIAL_STATE, action) => {
   }
   // Remove Items
   if (action.type === REMOVE_ITEM) {
-    const removedItem = state.addedItems.filter(
+    const removedItem = state.itemAdded.filter(
       (item) => item.id !== action.payload
     );
     const totalPrice = state.items.find((item) => item.id === action.payload);
     console.log(totalPrice.price);
     return {
       ...state,
-      addedItems: removedItem,
+      itemAdded: removedItem,
       number: state.number - 1,
       total: state.total - totalPrice.price,
     };
@@ -109,7 +109,6 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       total: state.total - subItemToTotal.price,
-      quantity: state.quantity - 1,
     };
   }
   return state;

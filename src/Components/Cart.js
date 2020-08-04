@@ -15,7 +15,7 @@ import { removeFromCart, addToTotal, subToTotal } from "../actions";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 const Cart = () => {
-  const items = useSelector((state) => state.cartReducer.addedItems);
+  const items = useSelector((state) => state.cartReducer.itemAdded);
   const Total = useSelector((state) => state.cartReducer.total);
   const quantity = useSelector((state) => state.cartReducer.quantity);
   const dispatch = useDispatch();
@@ -59,9 +59,6 @@ const Cart = () => {
                 </Typography>
                 <Typography color="textPrimary" component="h1">
                   <h5>Price: {items.price}</h5>
-                </Typography>
-                <Typography color="textPrimary" component="h1">
-                  <h5>quantity: {quantity}</h5>
                 </Typography>
               </CardContent>
             </CardActionArea>
